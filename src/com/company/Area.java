@@ -5,16 +5,17 @@ package com.company;
  */
 public class Area extends Zone {
     private boolean important;
-    private boolean nearSea;
-    private int occupied;
+    private boolean dangerous;
+    private int component;
+    private boolean occupied = false;
 
     Area () {}
 
-    Area (boolean important, boolean nearSea) {
+    Area (boolean important, boolean dangerous) {
         super();
         this.important = important;
-        this.nearSea = nearSea;
-        this.occupied = Component.NONE;
+        this.dangerous = dangerous;
+        this.component = Component.randComponent();
     }
 
     public boolean isImportant() {
@@ -25,19 +26,27 @@ public class Area extends Zone {
         this.important = important;
     }
 
-    public boolean isNearSea() {
-        return nearSea;
+    public boolean isDangerous() {
+        return dangerous;
     }
 
-    public void setNearSea(boolean nearSea) {
-        this.nearSea = nearSea;
+    public void setDangerous(boolean dangerous) {
+        this.dangerous = dangerous;
     }
 
-    public int getOccupied() {
+    public int getComponent() {
+        return component;
+    }
+
+    public void setComponent(int component) {
+        this.component = component;
+    }
+
+    public boolean isOccupied() {
         return occupied;
     }
 
-    public void setOccupied(int occupied) {
+    public void setOccupied(boolean occupied) {
         this.occupied = occupied;
     }
 }

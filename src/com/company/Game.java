@@ -23,8 +23,8 @@ public class Game {
     }
 
     void updateTime() {
-        this.hours = gameTime.hours;
-        this.mins = gameTime.mins;
+        this.hours = gameTime.getHours();
+        this.mins = gameTime.getMins();
         System.out.println();
     }
 }

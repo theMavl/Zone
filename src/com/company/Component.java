@@ -31,6 +31,10 @@ public class Component {
         this.pollution = Pollution;
     }
 
+    public static int randComponent() {
+        return (int) (Math.random()*MAX_COMPONENTS);
+    }
+
 }
 
 class Water extends Component {

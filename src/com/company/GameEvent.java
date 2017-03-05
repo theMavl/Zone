@@ -14,12 +14,12 @@ public class GameEvent implements Runnable {
     static final int EVENT_BOSS = 2;
     static final int EVENT_WEATHER = 3;
 
-    public static void newVisitors() {
+    public static void newVisitor() {
         new Visitor(Visitor.MOOD_SUPER_CALM).act();
-
     }
 
     GameEvent() {}
+
     GameEvent(Zone zone, Player player, GameTime gameTime) {
         this.zone = zone;
         this.player = player;

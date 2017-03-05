@@ -8,11 +8,6 @@ public class Main {
         Player player = new Player();
         Area kek = new Area();
         kek.setPollution((byte)1);
-
         Component tree = Plant.randPlant();
-
-
-
-
     }
 }
