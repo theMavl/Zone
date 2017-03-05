@@ -6,19 +6,20 @@ import java.util.ArrayList;
  * Created by mavl on 16.01.2017.
  */
 public class Zone {
-    final byte DEFAULT_SIZE = 100;
-    final static byte TYPE_GREEN = 1;
-    final static byte TYPE_DESERT = 2;
-    final static byte TYPE_WINTER = 3;
+    final static int DEFAULT_SIZE = 100;
+    /*final static int TYPE_GREEN = 1;
+    final static int TYPE_DESERT = 2;
+    final static int TYPE_WINTER = 3;*/
 
-    byte prestige;
-    boolean open;
-    byte pollution;
-    byte condition;
-    byte type;
-    boolean onFire;
+    private int prestige;
+    private boolean open;
+    private int pollution;
+    private int condition;
+    private int type;
+    private boolean onFire;
     Area[][] areas;
     ArrayList<Visitor> visitors;
+    static int size;
 
     Zone () {
         prestige = 1;
@@ -27,32 +28,76 @@ public class Zone {
         condition = 100;
         onFire = false;
         visitors = new ArrayList<>();
-        initAreas(DEFAULT_SIZE, DEFAULT_SIZE);
+        initAreas(DEFAULT_SIZE);
     }
 
-    Zone(int height, int width) {
+    Zone(int areaSize) {
         this();
-        initAreas(height, width);
+        initAreas(areaSize);
     }
 
-    void setType(byte type) {
+    public int getPrestige() {
+        return prestige;
+    }
+
+    public void setPrestige(int prestige) {
+        this.prestige = prestige;
+    }
+
+    public boolean isOpen() {
+        return open;
+    }
+
+    public void setOpen(boolean open) {
+        this.open = open;
+    }
+
+    public int getPollution() {
+        return pollution;
+    }
+
+    public int getCondition() {
+        return condition;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public boolean isOnFire() {
+        return onFire;
+    }
+
+    void setType(int type) {
         this.type = type;
     }
 
-    void setPollution(byte pollution) {
+    void setPollution(int pollution) {
         this.pollution = pollution;
     }
-    void setCondition(byte condition) { this.condition = condition; }
+    void setCondition(int condition) { this.condition = condition; }
 
-    void changePollution(byte delta) {
+    int calcPollution() {
+        int pollution = 0;
+        int counter = 0;
+        for (Area[] area : areas)
+            for (Area area2: area) {
+                pollution += area2.getPollution();
+                counter += 1;
+            }
+        return (int)(pollution/counter);
+    }
+
+    void changePollution(int delta) {
         pollution += delta;
     }
-    void changeCondition(byte delta) {
+    void changeCondition(int delta) {
         condition += delta;
     }
 
-    void initAreas(int height, int width) {
-        areas = new Area[height][width];
+    void initAreas(int areaSize) {
+        areas = new Area[areaSize][areaSize];
+        size = areaSize;
     }
 
     void setOnFire(boolean fire) {

@@ -4,30 +4,30 @@ package com.company;
  * Created by mavl on 17.01.2017.
  */
 public class Component {
-    final static byte MAX_COMPONENTS = 5;
-    final static byte NONE = 0;
-    final static byte WATER = 1;
-    final static byte PLANT = 2;
-    final static byte MEADOW = 3;
-    final static byte LANDSCAPE = 4;
+    final static int MAX_COMPONENTS = 5;
+    final static int NONE = 0;
+    final static int WATER = 1;
+    final static int PLANT = 2;
+    final static int MEADOW = 3;
+    final static int LANDSCAPE = 4;
 
-    byte pollution;
-    byte condition;
-    byte type;
+    private int pollution;
+    private int condition;
+    int type;
 
     Component () {}
 
-    Component (byte type) {
+    Component (int type) {
         this.type = type;
     }
 
-    public byte[] getDefaultSize() { return null; }
+    public int[] getDefaultSize() { return null; }
 
-    public void setCondition(byte condition) {
+    public void setCondition(int condition) {
         this.condition = condition;
     }
 
-    public void setPollution(byte Pollution) {
+    public void setPollution(int Pollution) {
         this.pollution = Pollution;
     }
 
@@ -35,24 +35,24 @@ public class Component {
 
 class Water extends Component {
 
-    final static byte MAX_TYPES = 3;
-    final static byte POND = 1;
-    final static byte LAKE = 2;
-    final static byte RIVER = 3;
+    final static int MAX_TYPES = 3;
+    final static int POND = 1;
+    final static int LAKE = 2;
+    final static int RIVER = 3;
 
     Water () {}
 
-    Water (byte type) {
+    Water (int type) {
         super(type);
     }
 
     static Water randWater() {
-        return new Water((byte)((Math.random())*MAX_TYPES));
+        return new Water((int)((Math.random())*MAX_TYPES));
     }
 
     @Override
-    public byte[] getDefaultSize() {
-        byte[] size = new byte[2];
+    public int[] getDefaultSize() {
+        int[] size = new int[2];
         switch (this.type) {
             case POND:
                 size[0] = 1;
@@ -74,26 +74,26 @@ class Water extends Component {
 }
 
 class Plant extends Component{
-    final static byte MAX_TYPES = 4;
-    final static byte SHRUB = 1;
-    final static byte TREE = 2;
-    final static byte SMALL_FOREST = 3;
-    final static byte FOREST = 4;
+    final static int MAX_TYPES = 4;
+    final static int SHRUB = 1;
+    final static int TREE = 2;
+    final static int SMALL_FOREST = 3;
+    final static int FOREST = 4;
 
 
     Plant () {}
 
-    Plant (byte type) {
+    Plant (int type) {
         super(type);
     }
 
     static Plant randPlant() {
-        return new Plant((byte)((Math.random())*MAX_TYPES));
+        return new Plant((int)((Math.random())*MAX_TYPES));
     }
 
     @Override
-    public byte[] getDefaultSize() {
-        byte[] size = new byte[2];
+    public int[] getDefaultSize() {
+        int[] size = new int[2];
         switch (this.type) {
             case SHRUB:
                 size[0] = 1;
@@ -120,25 +120,25 @@ class Plant extends Component{
 }
 
 class Meadow extends Component {
-    final static byte MAX_TYPES = 4;
-    final static byte SMALL = 1;
-    final static byte MEDIUM = 2;
-    final static byte LARGE = 3;
-    final static byte HUGE = 4;
+    final static int MAX_TYPES = 4;
+    final static int SMALL = 1;
+    final static int MEDIUM = 2;
+    final static int LARGE = 3;
+    final static int HUGE = 4;
 
     Meadow () {}
 
-    Meadow (byte type) {
+    Meadow (int type) {
         super(type);
     }
 
     static Meadow randMeadow() {
-        return new Meadow((byte)((Math.random())*MAX_TYPES));
+        return new Meadow((int)((Math.random())*MAX_TYPES));
     }
 
     @Override
-    public byte[] getDefaultSize() {
-        byte[] size = new byte[2];
+    public int[] getDefaultSize() {
+        int[] size = new int[2];
         switch (this.type) {
             case SMALL:
                 size[0] = 1;
@@ -165,28 +165,28 @@ class Meadow extends Component {
 }
 
 class Landscape extends Component {
-    final static byte MAX_TYPES = 3;
-    final static byte HILL = 1;
-    final static byte MOUNTAIN = 2;
-    final static byte CANYON = 4;
+    final static int MAX_TYPES = 3;
+    final static int HILL = 1;
+    final static int MOUNTAIN = 2;
+    final static int CANYON = 4;
 
     public boolean hasCave;
 
     Landscape() {}
 
-    Landscape (byte type) { super (type); }
+    Landscape (int type) { super (type); }
 
     public void setHasCave(boolean hasCave) {
         this.hasCave = hasCave;
     }
 
     static Landscape randLandscape() {
-        return new Landscape((byte)((Math.random())*MAX_TYPES));
+        return new Landscape((int)((Math.random())*MAX_TYPES));
     }
 
     @Override
-    public byte[] getDefaultSize() {
-        byte[] size = new byte[2];
+    public int[] getDefaultSize() {
+        int[] size = new int[2];
         switch (this.type) {
             case HILL:
                 size[0] = 1;

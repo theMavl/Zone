@@ -7,28 +7,22 @@ import static com.company.Main.ThePark;
  */
 public class Visitor {
 
-    final static byte MOOD_SUPER_CALM = 0;
-    final static byte MOOD_NORMAL = 1;
-    final static byte MOOD_NERVOUS = 2;
-    final static byte MOOD_ANGRY = 3;
-    final static byte MOOD_BADASS = 4;
+    final static int MOOD_SUPER_CALM = 0;
+    final static int MOOD_NORMAL = 1;
+    final static int MOOD_NERVOUS = 2;
+    final static int MOOD_ANGRY = 3;
+    final static int MOOD_BADASS = 4;
 
-    byte people;
-    byte mood;
+    int mood;
     int[] area = new int[2];
-    byte intent;
 
-    Visitor () {}
-
-    Visitor (byte people, byte mood) {
-        this.people = people;
-        this.mood = mood;
-        this.intent = (byte)(Math.random()*Component.MAX_COMPONENTS);
+    Visitor () {
+        this.mood = (int)(Math.random()*5);
+        this.area = new int[] {(int)(Math.random()*Zone.size), (int)(Math.random()*Zone.size)};
     }
 
-    Visitor (byte people, byte mood, byte intent) {
-        this(people, mood);
-        this.intent = intent;
+    Visitor (int mood) {
+        this.mood = mood;
     }
 
     public void act() {
@@ -38,22 +32,22 @@ public class Visitor {
                 break;
 
             case MOOD_NORMAL:
-                currentArea.changePollution((byte)10);
+                currentArea.changePollution(10);
                 break;
 
             case MOOD_NERVOUS:
-                currentArea.changePollution((byte)20);
-                currentArea.changeCondition((byte)10);
+                currentArea.changePollution(20);
+                currentArea.changeCondition(10);
                 break;
 
             case MOOD_ANGRY:
-                currentArea.changePollution((byte)30);
-                currentArea.changeCondition((byte)20);
+                currentArea.changePollution(30);
+                currentArea.changeCondition(20);
                 break;
 
             case MOOD_BADASS:
-                currentArea.changePollution((byte)40);
-                currentArea.changeCondition((byte)40);
+                currentArea.changePollution(40);
+                currentArea.changeCondition(40);
                 break;
         }
     }

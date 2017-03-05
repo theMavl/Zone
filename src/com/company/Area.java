@@ -4,9 +4,9 @@ package com.company;
  * Created by mavl on 17.01.2017.
  */
 public class Area extends Zone {
-    boolean important;
-    boolean nearSea;
-    byte occupied;
+    private boolean important;
+    private boolean nearSea;
+    private int occupied;
 
     Area () {}
 
@@ -15,5 +15,29 @@ public class Area extends Zone {
         this.important = important;
         this.nearSea = nearSea;
         this.occupied = Component.NONE;
+    }
+
+    public boolean isImportant() {
+        return important;
+    }
+
+    public void setImportant(boolean important) {
+        this.important = important;
+    }
+
+    public boolean isNearSea() {
+        return nearSea;
+    }
+
+    public void setNearSea(boolean nearSea) {
+        this.nearSea = nearSea;
+    }
+
+    public int getOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(int occupied) {
+        this.occupied = occupied;
     }
 }

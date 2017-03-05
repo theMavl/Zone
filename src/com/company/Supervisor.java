@@ -6,7 +6,7 @@ package com.company;
 public class Supervisor {
 
     void cleanZone(Zone zone) {
-        zone.setPollution((byte)20);
+        zone.setPollution(0);
     }
 
     void sendFiremen(Zone zone) {

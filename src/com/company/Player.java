@@ -6,8 +6,8 @@ package com.company;
 public class Player {
 
     final static double START_BALANCE = 1000.0;
-    double money = START_BALANCE;
-    byte fines;
+    private double money = START_BALANCE;
+    private int fines;
     Supervisor order;
 
     Player () {
@@ -28,7 +28,7 @@ public class Player {
     }
 
     void cleanZone(Zone zone) {
-        zone.setPollution((byte)20);
+        zone.setPollution((int)20);
         changeMoney(-100);
     }
 
