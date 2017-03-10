@@ -7,37 +7,35 @@ public class GameEvent implements Runnable {
 
     Zone zone;
     Player player;
-    GameTime gameTime;
 
     static final int EVENT_VISITOR = 0;
     static final int EVENT_FIRE = 1;
     static final int EVENT_BOSS = 2;
     static final int EVENT_WEATHER = 3;
 
-    public static void newVisitor() {
-        new Visitor(Visitor.MOOD_SUPER_CALM).act();
-    }
-
     GameEvent() {}
 
-    GameEvent(Zone zone, Player player, GameTime gameTime) {
+    GameEvent(Zone zone, Player player) {
         this.zone = zone;
         this.player = player;
-        this.gameTime = gameTime;
     }
 
     @Override
     public void run() {
-
+        randEvent();
     }
 
-    void randEvent() {
+    private void randEvent() {
         int rnd = (int)(Math.random()*5);
+        rnd = EVENT_VISITOR; // DEBUG
         switch (rnd){
             case EVENT_VISITOR:
-                new Visitor().act();
+                EventHandler.newTask(GameTime.getJustTime()+10, "VISIT", "1;2");
+                zone.areas[1][2].close();
                 break;
             case EVENT_FIRE:
+                EventHandler.newTask(GameTime.getJustTime()+10, "FIRE", "2;2");
+                zone.areas[1][2].setOnFire(true);
                 break;
             case EVENT_WEATHER:
                 break;

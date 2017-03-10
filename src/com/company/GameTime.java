@@ -6,9 +6,10 @@ import java.sql.Time;
  * Created by mavl on 23.02.2017.
  */
 public class GameTime implements Runnable {
-    private int hours = 0;
-    private int mins = 0;
-    private int len = 1000;
+    private static int hours = 0;
+    private static int mins = 0;
+    private static int len = 1000;
+    private static int justTime = 0;
 
 
     GameTime() {}
@@ -48,13 +49,17 @@ public class GameTime implements Runnable {
         return this.len;
     }
 
+    public static int getJustTime() {return justTime;}
+
     private void tick() {
-        mins += 1;
+        /*mins += 1;
         if (mins == 60) {
             mins = 0;
             hours += 1;
             if (hours == 24)
                 hours = 0;
-        }
+        }*/
+        justTime++;
+        EventHandler.checkTasks();
     }
 }

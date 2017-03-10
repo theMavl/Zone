@@ -52,6 +52,9 @@ public class Zone {
         this.open = open;
     }
 
+    public void close() {this.open = false;}
+    public void open() {this.open = true;}
+
     public int getPollution() {
         return pollution;
     }

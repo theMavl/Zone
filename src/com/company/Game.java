@@ -4,8 +4,6 @@ package com.company;
  * Created by mavl on 23.02.2017.
  */
 public class Game {
-    int hours;
-    int mins;
     GameTime gameTime;
     GameEvent gameEventsCreator;
     Player thePlayer;
@@ -22,9 +20,4 @@ public class Game {
         new Thread(gameEventsCreator).start();
     }
 
-    void updateTime() {
-        this.hours = gameTime.getHours();
-        this.mins = gameTime.getMins();
-        System.out.println();
-    }
 }
